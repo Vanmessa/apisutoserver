@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  test_api:
+    container_name: test_api
+    build: python/
+    restart: always
+
+    networks:
+      - default
+      
+    ports:
+      - 7001:80
+    environment:
+      VIRTUAL_HOST: accommodation.pjjop.org
+      LETSENCRYPT_HOST: accommodation.pjjop.org
+      
+networks:
+  default:
+    external:
+      name: 
+        basic_model_network
+  webproxy:
+    external:
+      name: webproxy
